@@ -3,24 +3,27 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { LoginPageComponent } from './login-page/login-page.component';
 
-import { AddNeedModule } from './add-need-page/add-need.module'
-import { ConsultNeedModule } from './consult-need-page/consult-need.module'
+import { AddNeedComponent } from './add-need-page/add-need.component'
+import { AddNeedService } from './add-need-page/add-need.service'
 
+import { ConsultNeedComponent } from './consult-need-page/consult-need.component'
+import { ConsultNeedService } from './consult-need-page/consult-need.service'
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent,
-    AddNeedModule,
-    ConsultNeedModule
+    AddNeedComponent,
+    ConsultNeedComponent
   ],
   imports: [
     NgbModule.forRoot(),
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    AddNeedService,
+    ConsultNeedService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

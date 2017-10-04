@@ -8,7 +8,7 @@ import { CanActivateViaAuthGuard } from './activation';
 import { AppComponent }       from './app.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/add-need', pathMatch: 'full' },
+  { path: '', redirectTo: '/consult-need', pathMatch: 'full' },
   { path: 'consult-need',  component: ConsultNeedComponent, canActivate:  [CanActivateViaAuthGuard] },
   { path: 'add-need', component: AddNeedComponent, canActivate:  [CanActivateViaAuthGuard] },
   { path: 'login', component: AppComponent } 

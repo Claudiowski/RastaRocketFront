@@ -27,7 +27,7 @@ export class AppComponent {
         token = token.split("\"")[1]
         console.log(token)
         sessionStorage.setItem('token', token)
-        this.router.navigateByUrl('/add-need') })
+        this.router.navigateByUrl('/consult-need') })
   }
 
   resetForm() {

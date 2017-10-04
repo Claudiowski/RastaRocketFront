@@ -6,18 +6,29 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ConsultNeedService {
 
-  url = "http://vps463091.ovh.net/rastarocket/api/needs"
+  url = "https://levasseurantoine.ovh/rastarocket/api/needs/"
 
   constructor(private http : Http) { }
 
   public fetchNeedService() {
     let headers = new Headers()
-    headers.append('Authorization', sessionStorage.getItem('token'))
+    headers.append('Authorization', "Token " + sessionStorage.getItem('token'))
     return this.http.get(this.url, new RequestOptions({ headers: headers }))
             .toPromise()
             .then(response => { 
                 console.log(response)
-                return response
+                return response.json().needs
+             })
+  }
+
+  public deleteNeed(need_id : number) {
+    let headers = new Headers()
+    let url = this.url + need_id
+    headers.append('Authorization', "Token " + sessionStorage.getItem('token'))
+    return this.http.delete(url, new RequestOptions({ headers: headers }))
+            .toPromise()
+            .then(response => { 
+                console.log(response)
              })
   }
 }

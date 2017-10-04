@@ -1,37 +1,69 @@
+<button class="btn btn-primary" (click)="goToGrid()">Consulter les besoins</button>
+
 <h4>Ajouter un besoin</h4>
 
 <form>
-
     <div *ngIf="page == 1">
-      <div class="form-group row">
-          <label for="title" class="col-sm-2 col-form-label">
-              Titre
-          </label>
-          <div class="col-sm-10">
-              <input id="title" placeholder="Titre du besoin" type="text" class="form-control" #needTitle>
-          </div>    
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">            
+        <div class="form-group row">
+            <label for="title" class="col-sm-2 col-form-label">
+                Titre
+            </label>
+            <div class="col-sm-10">
+                <input id="title" placeholder="Titre du besoin" type="text" class="form-control" #needTitle>
+            </div>    
+        </div>
+        <div class="form-group row">
+            <label for="contact" class="col-sm-2 col-form-label">
+              Contact
+            </label>
+            <div class="col-sm-10">
+                <input id="contact" placeholder="Nom du contact" type="text" class="form-control" #needContact>
+            </div>    
+        </div>
+        <div class="form-group row">
+            <label for="customer" class="col-sm-2 col-form-label">
+              Client
+            </label>
+            <div class="col-sm-10">
+                <input id="customer" placeholder="Client" type="text" class="form-control" #needCustomer>
+            </div>    
+        </div>
       </div>
-      <div class="form-group row">
-          <label for="contact" class="col-sm-2 col-form-label">
-            Contact
-          </label>
-          <div class="col-sm-10">
-              <input id="contact" placeholder="Nom du contact" type="text" class="form-control" #needContact>
-          </div>    
-      </div>
-      <div class="form-group row">
-          <label for="customer" class="col-sm-2 col-form-label">
-            Client
-          </label>
-          <div class="col-sm-10">
-              <input id="customer" placeholder="Client" type="text" class="form-control" #needCustomer>
-          </div>    
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <h4></h4>       
+          <div class="form-group row">
+              <label for="title" class="col-sm-2 col-form-label">
+                  Clef 1
+              </label>
+              <div class="col-sm-10">
+                  <input id="key1" placeholder="Clef 1" type="text" class="form-control" #needKey1>
+              </div>    
+          </div>
+          <div class="form-group row">
+              <label for="contact" class="col-sm-2 col-form-label">
+                Clef 2
+              </label>
+              <div class="col-sm-10">
+                  <input id="contact" placeholder="Clef 2" type="text" class="form-control" #needKey2>
+              </div>    
+          </div>
+          <div class="form-group row">
+              <label for="customer" class="col-sm-2 col-form-label">
+                Clef 3
+              </label>
+              <div class="col-sm-10">
+                  <input id="customer" placeholder="Clef 3" type="text" class="form-control" #needKey3>
+              </div>    
+          </div>
       </div>
       
       <div class="login-button form-group row">
         <div class="col-sm-10">
           <button class="btn btn-primary"
-            (click)="submitPage1(needTitle.value, needContact.value, 
+            (click)="submitPage1(templatePage1, needTitle.value, needContact.value, 
                               needCustomer.value)">Valider
           </button>
         </div>
@@ -102,7 +134,7 @@
                 Durée
             </label>
             <div class="col-sm-10">
-            <input id="duree" placeholder="Durée" type="text" class="form-control" #needMonthDuration>
+            <input id="duree" placeholder="Durée" type="time" class="form-control" #needMonthDuration>
             </div>      
         </div>
       </div>
@@ -111,7 +143,7 @@
       (click)="backwardPage1()">Reculer
       </button>
       <button class="btn btn-primary"
-        (click)="submitPage2(needConsultant1.value, needConsultant2.value,
+        (click)="submitPage2(templatePage2, needConsultant1.value, needConsultant2.value,
                             needConsultant3.value, needConsultant4.value,
                             needConsultant5.value, 
                             needDescription.value, needMonthDuration.value)">Valider
@@ -124,15 +156,15 @@
               Prix
           </label>
           <div class="col-sm-10">
-              <input id="prix" placeholder="Prix HT" type="text" class="form-control" #needPrice>
+              <input id="prix" placeholder="Prix HT" type="number" class="form-control" #needPrice>
           </div>      
       </div>
       <div class="form-group row">
           <label for="start" class="col-sm-2 col-form-label">
-              Début au pus tard
+              Début au plus tard
           </label>
           <div class="col-sm-10">
-            <input id="start" placeholder="Début au plus tard" type="text" class="form-control" #needStart>
+            <input id="start" placeholder="Début au plus tard" type="date" class="form-control" #needStart>
           </div>      
       </div>
       <button class="btn btn-primary"
@@ -166,3 +198,27 @@
     </div>
     
 </form>
+
+<template #templatePage1>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Erreur</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Les champs titre, client et contact sont obligatoires !
+    </div>
+</template>
+
+<template #templatePage2>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Erreur</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Le champ description est obligatoire !
+    </div>
+</template>

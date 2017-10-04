@@ -9,7 +9,7 @@ export class AppService {
   private url : string
   
       constructor(private http: Http) { 
-          this.url = 'http://vps463091.ovh.net/rastarocket/api/token/'
+          this.url = 'https://levasseurantoine.ovh/rastarocket/api/token/'
       }
   
       public fetchToken(email : string, passwd : string){

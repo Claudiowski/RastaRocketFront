@@ -15,7 +15,6 @@ export class AddNeedComponent implements OnInit {
   private customer: string
 
   private consultant: number[]
-  private status: string
   private description: string
   private duration: string
 
@@ -27,13 +26,12 @@ export class AddNeedComponent implements OnInit {
     this.consultant = []
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   private sendNeed()
   {
     let token = sessionStorage.getItem('token')
-    this._addNeedService.addNeed(this.title, this.contact, this.customer, this.consultant, this.status, this.description, this.duration, this.price, this.start)
+    this._addNeedService.addNeed(this.title, this.contact, this.customer, this.consultant, this.description, this.duration, this.price, this.start)
   }
 
   private submitPage1(title, contact, customer) {
@@ -43,13 +41,12 @@ export class AddNeedComponent implements OnInit {
     this.page ++
   }
 
-  private submitPage2(cons1, cons2, cons3, cons4, cons5, status, description, duration) {
+  private submitPage2(cons1, cons2, cons3, cons4, cons5, description, duration) {
     this.consultant.push(cons1)
     this.consultant.push(cons2)
     this.consultant.push(cons3)
     this.consultant.push(cons4)
     this.consultant.push(cons5)
-    this.status = status
     this.description = description
     this.duration = duration
     this.page ++
@@ -70,7 +67,6 @@ export class AddNeedComponent implements OnInit {
 
   private backwardPage2() {
     this.consultant = []
-    this.status = ''
     this.description = ''
     this.duration = ''
     this.page --
@@ -87,10 +83,8 @@ export class AddNeedComponent implements OnInit {
     this.contact = ''
     this.customer = ''
     this.consultant = []
-    this.status = ''
     this.description = ''
     this.duration = ''
-    this.status = ''
     this.description = ''
     this.duration = ''
     this.page = 1

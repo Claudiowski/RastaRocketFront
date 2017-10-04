@@ -3,48 +3,142 @@
 <form>
 
     <div *ngIf="page == 1">
-      <input placeholder="Titre du besoin" type="text" #needTitle>
-      <input placeholder="Nom du contact" type="text" #needContact>
-      <input placeholder="Client" type="text" #needCustomer>
-
-      <button
-        (click)="submitPage1(needTitle.value, needContact.value, 
-                          needCustomer.value)">Valider
-      </button>
+      <div class="form-group row">
+          <label for="title" class="col-sm-2 col-form-label">
+              Titre
+          </label>
+          <div class="col-sm-10">
+              <input id="title" placeholder="Titre du besoin" type="text" class="form-control" #needTitle>
+          </div>    
+      </div>
+      <div class="form-group row">
+          <label for="contact" class="col-sm-2 col-form-label">
+            Contact
+          </label>
+          <div class="col-sm-10">
+              <input id="contact" placeholder="Nom du contact" type="text" class="form-control" #needContact>
+          </div>    
+      </div>
+      <div class="form-group row">
+          <label for="customer" class="col-sm-2 col-form-label">
+            Client
+          </label>
+          <div class="col-sm-10">
+              <input id="customer" placeholder="Client" type="text" class="form-control" #needCustomer>
+          </div>    
+      </div>
+      
+      <div class="login-button form-group row">
+        <div class="col-sm-10">
+          <button class="btn btn-primary"
+            (click)="submitPage1(needTitle.value, needContact.value, 
+                              needCustomer.value)">Valider
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div *ngIf="page == 2">
-      <input placeholder="Consultant 1 en charge" type="text" #needConsultant1>
-      <input placeholder="Consultant 2 en charge" type="text" #needConsultant2>
-      <input placeholder="Consultant 3 en charge" type="text" #needConsultant3>
-      <input placeholder="Consultant 4 en charge" type="text" #needConsultant4>
-      <input placeholder="Consultant 5 en charge" type="text" #needConsultant5>
+    <div class="row" *ngIf="page == 2">
       
-      <select #needStatus>
-        <option>Ouvert</option>
-        <option>Terminée</option>
-        <option>Perdu</option>
-      </select>  
-      <textarea placeholder="Expression du besoin" type="text" #needDescription></textarea>
-      <input placeholder="Durée" type="text" #needMonthDuration>
-      <button
-        (click)="backwardPage1()">Reculer
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <div class="form-group row">
+            <label for="consultant1" class="col-sm-2 col-form-label">
+                Consultant 1
+            </label>
+            <div class="col-sm-10">
+                <input id="consultant1" placeholder="Consultant 1 en charge" type="text" class="form-control" #needConsultant1>
+            </div>    
+        </div>
+        <div class="form-group row">
+            <label for="consultant2" class="col-sm-2 col-form-label">
+              Consultant 2
+            </label>
+            <div class="col-sm-10">
+              <input id="consultant2" placeholder="Consultant 2 en charge" type="text" class="form-control" #needConsultant2>
+            </div>    
+        </div>
+        <div class="form-group row">
+            <label for="consultant3" class="col-sm-2 col-form-label">
+              Consultant 3
+            </label>
+            <div class="col-sm-10">
+              <input id="consultant3" placeholder="Consultant 3 en charge" type="text" class="form-control" #needConsultant3>
+            </div>    
+        </div>
+        <div class="form-group row">
+            <label for="consultant4" class="col-sm-2 col-form-label">
+              Consultant 4
+            </label>
+            <div class="col-sm-10">
+              <input id="consultant4" placeholder="Consultant 4 en charge" type="text" class="form-control" #needConsultant4>
+            </div>    
+        </div>
+      </div>
+
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+          <div class="form-group row">
+              <label for="consultant5" class="col-sm-2 col-form-label">
+                Consultant 5
+              </label>
+              <div class="col-sm-10">
+                <input id="consultant5" placeholder="Consultant 5 en charge" type="text" class="form-control" #needConsultant5>
+              </div>    
+          </div>
+
+          <div class="form-group row">
+              <label for="description" class="col-sm-2 col-form-label">
+                  Description
+              </label>
+              <div class="col-sm-10">
+                <textarea id="description" placeholder="Expression du besoin" type="text" class="form-control" #needDescription>
+                </textarea>
+              </div>      
+          </div>
+
+        <div class="form-group row">
+            <label for="duree" class="col-sm-2 col-form-label">
+                Durée
+            </label>
+            <div class="col-sm-10">
+            <input id="duree" placeholder="Durée" type="text" class="form-control" #needMonthDuration>
+            </div>      
+        </div>
+      </div>
+
+      <button class="btn btn-primary"
+      (click)="backwardPage1()">Reculer
       </button>
-      <button
+      <button class="btn btn-primary"
         (click)="submitPage2(needConsultant1.value, needConsultant2.value,
-                             needConsultant3.value, needConsultant4.value,
-                             needConsultant5.value, needStatus.value, 
-                             needDescription.value, needMonthDuration.value)">Valider
+                            needConsultant3.value, needConsultant4.value,
+                            needConsultant5.value, 
+                            needDescription.value, needMonthDuration.value)">Valider
       </button>
     </div>
 
     <div *ngIf="page == 3">
-      <input placeholder="Prix HT" type="text" #needPrice>
-      <input placeholder="Début au plus tard" type="text" #needStart>
-      <button
+      <div class="form-group row">
+          <label for="prix" class="col-sm-2 col-form-label">
+              Prix
+          </label>
+          <div class="col-sm-10">
+              <input id="prix" placeholder="Prix HT" type="text" class="form-control" #needPrice>
+          </div>      
+      </div>
+      <div class="form-group row">
+          <label for="start" class="col-sm-2 col-form-label">
+              Début au pus tard
+          </label>
+          <div class="col-sm-10">
+            <input id="start" placeholder="Début au plus tard" type="text" class="form-control" #needStart>
+          </div>      
+      </div>
+      <button class="btn btn-primary"
         (click)="backwardPage2()">Reculer
       </button>
-      <button type="submit" name="action"
+      <button type="submit" name="action" class="btn btn-primary"
         (click)="submitPage3(needPrice.value, needStart.value)">Valider
       </button>
     </div>
@@ -58,15 +152,15 @@
       <p>Description : {{description}}</p>
       <p>Durée : {{duration}}</p>
       <p>Titre : {{title}}</p>
-      <p>Prix : {{title}}</p>
+      <p>Prix : {{price}}</p>
       <p>Date limite de lancement : {{start}}</p>
-      <button
+      <button class="btn btn-primary"
         (click)="backwardPage3()">Reculer
       </button>
-      <button
+      <button class="btn btn-primary"
         (click)="resetFormData()">Réinitialiser
       </button>
-      <button
+      <button class="btn btn-primary"
         (click)="sendNeed()">Valider
       </button>
     </div>

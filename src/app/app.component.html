@@ -1,7 +1,6 @@
-<div class="auth-block" *ngIf="!_authService.logged">
+<div class="auth-block row" *ngIf="!_authService.logged">
 
-
-    <div class="auth-content">
+    <div class="auth-content col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-6">
         <form>
 
             <div class="form-group row">
@@ -9,7 +8,7 @@
                     Email :
                 </label>
                 <div class="col-sm-10">
-                    <input type="email" id="email" required [(ngModel)]="email" name="email"/>
+                    <input type="email" id="email" required [(ngModel)]="email" name="email" class="form-control"/>
                 </div>    
             </div>
 
@@ -18,13 +17,18 @@
                     Mot de passe :
                 </label>
                 <div class="col-sm-10">                        
-                    <input type="password" id="password" required [(ngModel)]="password" name="password" />
+                    <input type="password" id="password" required [(ngModel)]="password" name="password" class="form-control"/>
                 </div>
             </div>
 
-            <button type="submit" (click)="submitLogin(email, password)" class="btn btn-primary">
-                Valider    
-            </button>            
+            <div class="login-button form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" (click)="submitLogin(email, password)" class="btn btn-primary">
+                        Valider    
+                    </button> 
+                </div> 
+            </div>
+
         </form>
     </div>
 

@@ -8,7 +8,7 @@ export class AddNeedService {
 
   constructor(private http : Http) { }
 
-  public addNeed(title, contact, customer, consultant, status, description, duration, price, start) {
+  public addNeed(title, contact, customer, consultant, description, duration, price, start) {
     let headers = new Headers()
     let params = new URLSearchParams()
     headers.append('Authorization', 'Token ' + sessionStorage.getItem('token'))
@@ -16,7 +16,6 @@ export class AddNeedService {
     params.append('contact', ''+contact)
     params.append('customer', ''+customer)
     params.append('consultant', ''+consultant)
-    params.append('created_at', ''+status)
     params.append('description', ''+description)
     params.append('month_duration', ''+duration)
     params.append('contact', ''+contact)    

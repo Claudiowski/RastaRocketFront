@@ -19,7 +19,7 @@ import { AddNeedService } from './add-need-page/add-need.service'
 import { ConsultNeedComponent } from './consult-need-page/consult-need.component'
 import { ConsultNeedService } from './consult-need-page/consult-need.service'
 
-import { CarouselModule } from 'ngx-bootstrap/carousel';
+import {DataTableModule} from "angular2-datatable";
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     HttpModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CarouselModule
+    DataTableModule
   ],
   providers: [
     AppService,

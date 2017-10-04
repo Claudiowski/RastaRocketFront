@@ -1,3 +1,33 @@
-<p>
-  consult-need works!
-</p>
+<table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+  <thead>
+  <tr>
+      <th style="width: 20%">
+          <mfDefaultSorter by="name">Titre</mfDefaultSorter>
+      </th>
+      <th style="width: 50%">
+          <mfDefaultSorter by="email">Client</mfDefaultSorter>
+      </th>
+      <th style="width: 10%">
+          <mfDefaultSorter by="age">Statut</mfDefaultSorter>
+      </th>
+      <th style="width: 20%">
+          <mfDefaultSorter by="city">Date</mfDefaultSorter>
+      </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let need of needs">
+      <td>{{need.title}}</td>
+      <td>{{need}}</td>
+      <td class="text-right">{{item.age}}</td>
+      <td>{{item.city | uppercase}}</td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+      <td colspan="4">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+      </td>
+  </tr>
+  </tfoot>
+</table>

@@ -21,10 +21,13 @@ export class AppComponent {
 
   submitLogin() {
     this._appService.fetchToken(this.email, this.password)
-    .then(data => { 
-        sessionStorage.setItem('token', data)
+    .then(data => {
         console.log(data)
-        this.router.navigateByUrl('') })
+        let token = data.split(":")[1]
+        token = token.split("\"")[1]
+        console.log(token)
+        sessionStorage.setItem('token', token)
+        this.router.navigateByUrl('/add-need') })
   }
 
   resetForm() {

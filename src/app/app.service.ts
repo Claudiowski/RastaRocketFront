@@ -9,7 +9,7 @@ export class AppService {
   private url : string
   
       constructor(private http: Http) { 
-          this.url = 'http://vps463091.ovh.net/rastarocket/api/token'
+          this.url = 'http://vps463091.ovh.net/rastarocket/api/token/'
       }
   
       public fetchToken(email : string, passwd : string){
@@ -17,7 +17,6 @@ export class AppService {
         let headers = new Headers()
         headers.append('Authorization', "Basic " + btoa(email + ':' + passwd))
         headers.append('Content-Type', 'application/json')
-        console.log("Basic " + email + ':' + passwd)
         return this.http.get(this.url, new RequestOptions({ headers: headers }))
                 .toPromise()
                 .then(response => { 

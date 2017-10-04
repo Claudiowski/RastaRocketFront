@@ -1,7 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core'
-import { Http, URLSearchParams, RequestOptions } from '@angular/http'
-
-import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { AddNeedService } from './add-need.service'
 
 @Component({
   selector: 'app-add-need',
@@ -24,7 +22,7 @@ export class AddNeedComponent implements OnInit {
   private price: number
   private start: Date
 
-  constructor(private http: Http) { 
+  constructor(private _addNeedService : AddNeedService) { 
     this.page = 1
     this.consultant = []
   }
@@ -35,26 +33,7 @@ export class AddNeedComponent implements OnInit {
   private sendNeed()
   {
     let token = sessionStorage.getItem('token')
-
-    let headers = new Headers()
-    let params = new URLSearchParams()
-    let url = ''
-
-    headers.append('Authorization', token)  
-    params.append('title', ''+this.title)
-    params.append('contact', ''+this.contact)
-    params.append('customer', ''+this.customer)
-    params.append('consultant', ''+this.consultant)
-    params.append('created_at', ''+this.status)
-    params.append('description', ''+this.description)
-    params.append('month_duration', ''+this.duration)
-    params.append('contact', ''+this.contact)    
-    params.append('rate', ''+this.price)
-    params.append('start_at_latest', ''+this.start)
-    
-    this.http.post(url, params, new RequestOptions(headers))
-             .toPromise()
-             .then(response => { return response.json() })
+    this._addNeedService.addNeed(this.title, this.contact, this.customer, this.consultant, this.status, this.description, this.duration, this.price, this.start)
   }
 
   private submitPage1(title, contact, customer) {

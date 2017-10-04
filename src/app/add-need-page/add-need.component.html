@@ -1,21 +1,74 @@
-<ngb-carousel>
-    
-  <ng-template ngbSlide>
-    salut
-  </ng-template>
+<h4>Ajouter un besoin</h4>
 
-  <ng-template ngbSlide>
-    les potes
-  </ng-template>
+<form>
 
-  <ng-template ngbSlide>
-    ça va ?
-  </ng-template>
+    <div *ngIf="page == 1">
+      <input placeholder="Titre du besoin" type="text" #needTitle>
+      <input placeholder="Nom du contact" type="text" #needContact>
+      <input placeholder="Client" type="text" #needCustomer>
 
-  <ng-template ngbSlide>
-    récap  
-  </ng-template>
-    
-</ngb-carousel>
+      <button
+        (click)="submitPage1(needTitle.value, needContact.value, 
+                          needCustomer.value)">Valider
+      </button>
+    </div>
+
+    <div *ngIf="page == 2">
+      <input placeholder="Consultant 1 en charge" type="text" #needConsultant1>
+      <input placeholder="Consultant 2 en charge" type="text" #needConsultant2>
+      <input placeholder="Consultant 3 en charge" type="text" #needConsultant3>
+      <input placeholder="Consultant 4 en charge" type="text" #needConsultant4>
+      <input placeholder="Consultant 5 en charge" type="text" #needConsultant5>
       
-      
+      <select #needStatus>
+        <option>Ouvert</option>
+        <option>Terminée</option>
+        <option>Perdu</option>
+      </select>  
+      <textarea placeholder="Expression du besoin" type="text" #needDescription></textarea>
+      <input placeholder="Durée" type="text" #needMonthDuration>
+      <button
+        (click)="backwardPage1()">Reculer
+      </button>
+      <button
+        (click)="submitPage2(needConsultant1.value, needConsultant2.value,
+                             needConsultant3.value, needConsultant4.value,
+                             needConsultant5.value, needStatus.value, 
+                             needDescription.value, needMonthDuration.value)">Valider
+      </button>
+    </div>
+
+    <div *ngIf="page == 3">
+      <input placeholder="Prix HT" type="text" #needPrice>
+      <input placeholder="Début au plus tard" type="text" #needStart>
+      <button
+        (click)="backwardPage2()">Reculer
+      </button>
+      <button type="submit" name="action"
+        (click)="submitPage3(needPrice.value, needStart.value)">Valider
+      </button>
+    </div>
+
+    <div *ngIf="page == 4">
+      <p>Valider le formulaire ?</p>
+      <p>Titre : {{title}}</p>
+      <p>Contact : {{contact}}</p>
+      <p>Client : {{customer}}</p>
+      <p *ngFor="let c of consultant">{{ c }}</p>
+      <p>Description : {{description}}</p>
+      <p>Durée : {{duration}}</p>
+      <p>Titre : {{title}}</p>
+      <p>Prix : {{title}}</p>
+      <p>Date limite de lancement : {{start}}</p>
+      <button
+        (click)="backwardPage3()">Reculer
+      </button>
+      <button
+        (click)="resetFormData()">Réinitialiser
+      </button>
+      <button
+        (click)="sendNeed()">Valider
+      </button>
+    </div>
+    
+</form>

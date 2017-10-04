@@ -1,22 +1,29 @@
-<div class="auth-block">
+<div class="auth-block" *ngIf="!_authService.logged">
     <div class="auth-title">
         <h1>
-            Virgil
+            RastaRocketApp
         </h1>
     </div>
     <div class="auth-content">
         <form>
             <fieldset>
-                <label for="login">
+                <label for="email">
                     Pseudo :
                 </label>
-                <input type="text" id="pseudo" required [(ngModel)]="pseudo" name="pseudo" />
+                <input type="text" id="email" required [(ngModel)]="email" name="email" />
                 <label for="password">
                     Mot de passe :
                 </label>
                 <input type="password" id="password" required [(ngModel)]="password" name="password" />
-                <input type="submit" value="Valider" (click)="submitLogin(pseudo, password)" />
+                <input type="submit" value="Valider" (click)="submitLogin(email, password)" />
             </fieldset>
         </form>
     </div>
 </div>
+
+<div>
+    <router-outlet></router-outlet>    
+</div>
+
+        
+        

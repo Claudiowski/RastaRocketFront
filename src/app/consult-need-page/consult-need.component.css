@@ -1,6 +1,5 @@
 .modal-body-look {
     position: relative;
-    left: 30px;
 }
 
 .modal-body-delete {
@@ -27,3 +26,25 @@
     position: relative;
     left: 20px;
 }
+
+.need-desc {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.modal-header {
+    text-align: center;
+}
+
+[hidden] {
+    display: none;
+}
+
+.button-div {
+    text-align: center;
+}
+
+.delete-btn-div {
+    text-align: center;
+}
+

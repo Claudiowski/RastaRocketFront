@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http';
 import { AppService } from '../app.service';
 
+import {Observable} from 'rxjs/Observable';
+
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -57,5 +59,29 @@ constructor(private http: Http, private _appService: AppService) { }
               .then(response =>{
                 return response.json()
               })
+  }
+
+  fileChange(event, need_id) {
+    let fileList: FileList = event.target.files;
+    if(fileList.length > 0) {
+        let file: File = fileList[0];
+        let formData:FormData = new FormData();
+        let headers = new Headers();
+        formData.append('file', file, file.name);
+        headers.append('Authorization', "Token " + sessionStorage.getItem('token'))
+        headers.append('Content-Type', 'multipart/form-data');
+        headers.append('Accept', 'application/json');
+        let options = new RequestOptions({ headers: headers });
+        let url = this.url + need_id + "/contents"
+        console.log(event.target.files)
+        console.log(url)
+        this.http.post(url, formData, options)
+            .map(res => res.json())
+            .catch(error => Observable.throw(error))
+            .subscribe(
+                data => console.log('success'),
+                error => console.log(error)
+            )
+    }
   }
 }

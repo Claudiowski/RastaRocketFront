@@ -52,9 +52,6 @@
         <h4 class="modal-title pull-left">
             {{ chosenNeed.title }}
         </h4>
-        <button type="button" class="delete-btn btn btn-danger" (click)="tryDeleteNeed(chosenNeed.id, template)">
-            Supprimer
-        </button>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
         </button>
@@ -88,7 +85,7 @@
         </div>
         <div>
             <strong>Description :</strong>
-            <span>{{ chosenNeed.description }}</span>
+            <div class="need-desc col-xs-12 col-md-12 need-desc ">{{ chosenNeed.description }}</div>
         </div>
         <div *ngFor="let k of chosenNeed.success_keys; let i = index">
             <strong>Clef du succès n°{{i+1}} :</strong>
@@ -101,6 +98,16 @@
             <span>
                 {{ c.name }}
             </span>
+        </div>
+        <div class="button-div row">
+            <label class="btn btn-primary">
+                    Joindre un Fichier <input hidden type="file" (change)="sendFile($event)" placeholder="Upload file" accept=".pdf,.doc,.docx">                
+            </label>
+        </div>
+        <div class="delete-btn-div row">                
+            <button type="button" class="delete-btn btn btn-danger" (click)="tryDeleteNeed(chosenNeed.id, template)">
+                Supprimer
+            </button>
         </div>
     </div>
 </template>

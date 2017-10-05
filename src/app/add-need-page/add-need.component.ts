@@ -72,7 +72,7 @@ export class AddNeedComponent implements OnInit {
   }
 
   private submitPage1(template) {
-    if (this.title == '' || this.contactSelected == '' || this.customerSelected == '') {
+    if (this.title == undefined || this.contactSelected == undefined || this.customerSelected == undefined) {
       this.openModal(template)
     } else {
       this.page ++
@@ -80,7 +80,7 @@ export class AddNeedComponent implements OnInit {
   } 
 
   private submitPage2(template) {
-    if (this.description == '') {
+    if (this.description == undefined) {
       this.openModal(template)
     } else {
       this.page ++

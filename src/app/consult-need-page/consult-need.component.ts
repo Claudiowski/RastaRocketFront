@@ -90,4 +90,8 @@ export class ConsultNeedComponent implements OnInit {
     this.fetchSpecificNeed(need_id)
           .then(() => this.openModal(template))
   }
+  
+  private sendFile(event) {
+    this._consultNeedService.fileChange(event, this.chosenNeed['id'])
+  }
 }

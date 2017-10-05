@@ -19,7 +19,9 @@
               Contact
             </label>
             <div class="col-sm-10">
-                <input id="contact" placeholder="Nom du contact" type="text" class="form-control" #needContact>
+                <input id="contactSelected" [(ngModel)]="contactSelected" name="contactSelected"
+                (ngModelChange)="getContacts(needContact.value)" [typeahead]="foundContacts"
+                typeaheadOptionField="name" placeholder="Nom du contact" type="text" class="form-control" #needContact>
             </div>    
         </div>
         <div class="form-group row">
@@ -27,7 +29,9 @@
               Client
             </label>
             <div class="col-sm-10">
-                <input id="customer" placeholder="Client" type="text" class="form-control" #needCustomer>
+                <input id="customerSelected" [(ngModel)]="customerSelected" name="customerSelected"
+                (ngModelChange)="getCustomers(needCustomer.value)" [typeahead]="foundCustomers"
+                typeaheadOptionField="name" placeholder="Nom du client" type="text" placeholder="Client" type="text" class="form-control" #needCustomer>
             </div>    
         </div>
       </div>
@@ -47,7 +51,7 @@
                 Clef 2
               </label>
               <div class="col-sm-10">
-                  <input id="contact" placeholder="Clef 2" type="text" class="form-control" #needKey2>
+                  <input id="key2" placeholder="Clef 2" type="text" class="form-control" #needKey2>
               </div>    
           </div>
           <div class="form-group row">
@@ -55,7 +59,7 @@
                 Clef 3
               </label>
               <div class="col-sm-10">
-                  <input id="customer" placeholder="Clef 3" type="text" class="form-control" #needKey3>
+                  <input id="key3" placeholder="Clef 3" type="text" class="form-control" #needKey3>
               </div>    
           </div>
       </div>
@@ -64,7 +68,8 @@
         <div class="col-sm-10">
           <button class="btn btn-primary"
             (click)="submitPage1(templatePage1, needTitle.value, needContact.value, 
-                              needCustomer.value)">Valider
+                              needCustomer.value, needKey1.value,
+                              needKey2.value, needKey3.value)">Valider
           </button>
         </div>
       </div>
@@ -134,7 +139,7 @@
                 Durée
             </label>
             <div class="col-sm-10">
-            <input id="duree" placeholder="Durée" type="time" class="form-control" #needMonthDuration>
+            <input id="duree" placeholder="Durée" type="number" class="form-control" #needMonthDuration>
             </div>      
         </div>
       </div>

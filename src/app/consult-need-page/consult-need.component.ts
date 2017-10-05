@@ -46,13 +46,12 @@ export class ConsultNeedComponent implements OnInit {
 
   private deleteNeed() {
     this._consultNeedService.deleteNeed(this.needToDelete)
+          .then( () => this._consultNeedService.fetchNeedService()
+                              .then(data => this.needs = data ))
     this.needToDelete = 0
     this.needs = []
-    this._consultNeedService.fetchNeedService()
-            .then(data => {
-              console.log(data)
-              this.needs = data
-            })
+
+    this.modalRef.hide()        
   }
 
   private dontDeleteNeed() {

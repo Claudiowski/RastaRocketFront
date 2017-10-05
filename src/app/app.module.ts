@@ -20,8 +20,8 @@ import { ConsultNeedComponent } from './consult-need-page/consult-need.component
 import { ConsultNeedService } from './consult-need-page/consult-need.service'
 
 import { DataTableModule } from "angular2-datatable";
-import { DatepickerModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap';
+import { TypeaheadModule } from 'ngx-bootstrap';
 
 import { BsModalService } from 'ngx-bootstrap';
 
@@ -38,8 +38,8 @@ import { BsModalService } from 'ngx-bootstrap';
     AppRoutingModule,
     BrowserAnimationsModule,
     DataTableModule,
-    DatepickerModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TypeaheadModule.forRoot()
   ],
   providers: [
     AppService,

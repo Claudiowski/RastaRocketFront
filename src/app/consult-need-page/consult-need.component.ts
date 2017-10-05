@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ConsultNeedService } from './consult-need.service';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
-
 
 import { BsModalService } from 'ngx-bootstrap';
 import { BsModalRef } from 'ngx-bootstrap';
@@ -16,6 +15,8 @@ export class ConsultNeedComponent implements OnInit {
 
   public modalRef: BsModalRef;
 
+  private chosenNeed : Object
+
   needs = [];
   rowsOnPage = 5;
 
@@ -28,6 +29,10 @@ export class ConsultNeedComponent implements OnInit {
   ngOnInit() {
     moment.locale('fr');
     this.fetchNeeds();
+  }
+
+  public openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
   private fetchNeeds() {
@@ -50,6 +55,7 @@ export class ConsultNeedComponent implements OnInit {
   }
 
   private tryDeleteNeed(need_id, template) {
+    this.modalRef.hide()
     this.modalRef = this.modalService.show(template);
     this.needToDelete = need_id;
   }
@@ -68,5 +74,20 @@ export class ConsultNeedComponent implements OnInit {
   private dontDeleteNeed() {
     this.modalRef.hide();
     this.needToDelete = 0;
+  }
+
+  private fetchSpecificNeed(need_id) {
+    return this._consultNeedService.fetchSpecificNeed(need_id)
+          .then(data => {
+            const date = data.created_at;
+            data.created_at = moment(date).format('ddd DD MMM GGGG')
+            this.chosenNeed = data}
+          )
+    
+  }
+
+  private showSpecificNeed(need_id, template) {
+    this.fetchSpecificNeed(need_id)
+          .then(() => this.openModal(template))
   }
 }

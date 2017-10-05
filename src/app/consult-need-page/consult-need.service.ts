@@ -47,4 +47,15 @@ constructor(private http: Http, private _appService: AppService) { }
         sessionStorage.setItem('token', token);
       });
   }
+
+  public fetchSpecificNeed(need_id) {
+    let headers = new Headers();
+    let url = this.url + need_id;
+    headers.append('Authorization', 'Token ' + sessionStorage.getItem('token'));
+    return this.http.get(url, new RequestOptions({ headers: headers }))
+              .toPromise()
+              .then(response =>{
+                return response.json()
+              })
+  }
 }

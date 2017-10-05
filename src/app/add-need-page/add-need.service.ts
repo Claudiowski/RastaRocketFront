@@ -18,7 +18,7 @@ export class AddNeedService {
       param['success_keys'] = keys
     }
     if (consultant != []) {
-      param['consultant'] = consultant
+      param['consultants'] = consultant
     }
     if (duration != '') {
       param['month_duration'] = duration

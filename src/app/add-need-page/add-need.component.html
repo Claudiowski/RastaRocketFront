@@ -18,7 +18,7 @@
                     Titre
                 </label>
                 <div class="col-sm-10">
-                    <input id="title" placeholder="Titre du besoin" type="text" class="form-control" #needTitle>
+                    <input [(ngModel)]="title" name="title" id="title" placeholder="Titre du besoin" type="text" class="form-control">
                 </div>    
             </div>
             <div class="form-group row">
@@ -50,7 +50,7 @@
                       Clef 1
                   </label>
                   <div class="col-sm-10">
-                      <input id="key1" placeholder="Clef 1" type="text" class="form-control" #needKey1>
+                      <input [(ngModel)]="key1" name="key1" id="key1" placeholder="Clef 1" type="text" class="form-control" #needKey1>
                   </div>    
               </div>
               <div class="form-group row">
@@ -58,7 +58,7 @@
                     Clef 2
                   </label>
                   <div class="col-sm-10">
-                      <input id="contact" placeholder="Clef 2" type="text" class="form-control" #needKey2>
+                      <input [(ngModel)]="key2" name="key2" id="contact" placeholder="Clef 2" type="text" class="form-control" #needKey2>
                   </div>    
               </div>
               <div class="form-group row">
@@ -66,7 +66,7 @@
                     Clef 3
                   </label>
                   <div class="col-sm-10">
-                      <input id="customer" placeholder="Clef 3" type="text" class="form-control" #needKey3>
+                      <input [(ngModel)]="key3" name="key3" id="customer" placeholder="Clef 3" type="text" class="form-control" #needKey3>
                   </div>    
               </div>
           </div>
@@ -74,8 +74,7 @@
           <div class="login-button form-group row">
             <div class="col-md-12 col-xs-12" style="text-align: center">
               <button class="btn btn-primary" style="background-color: #FB8234"
-                (click)="submitPage1(templatePage1, needTitle.value, needContact.value, 
-                                  needCustomer.value)">Valider
+                (click)="submitPage1(templatePage1)">Valider
               </button>
             </div>
           </div>
@@ -91,7 +90,8 @@
                 <div class="col-sm-10">
                     <input id="consultant1Selected" [(ngModel)]="consultant1Selected" name="consultant1Selected"
                     (ngModelChange)="getConsultants1(needConsultant1.value, consultants1Found)" [typeahead]="foundConsultants1"
-                    typeaheadOptionField="name" placeholder="Nom du consultant 1" type="text" type="text" class="form-control" #needConsultant1>                </div>    
+                    typeaheadOptionField="name" placeholder="Nom du consultant 1" type="text" type="text" class="form-control" #needConsultant1>                
+                </div>    
             </div>
             <div class="form-group row">
                 <label for="consultant2" class="col-sm-2 col-form-label">
@@ -100,7 +100,8 @@
                 <div class="col-sm-10">
                     <input id="consultant2Selected" [(ngModel)]="consultant2Selected" name="consultant2Selected"
                     (ngModelChange)="getConsultants2(needConsultant2.value, consultants2Found)" [typeahead]="foundConsultants2"
-                    typeaheadOptionField="name" placeholder="Nom du consultant 2" type="text" type="text" class="form-control" #needConsultant2>                </div>    
+                    typeaheadOptionField="name" placeholder="Nom du consultant 2" type="text" type="text" class="form-control" #needConsultant2>
+                </div>    
             </div>
             <div class="form-group row">
                 <label for="consultant3" class="col-sm-2 col-form-label">
@@ -109,7 +110,8 @@
                 <div class="col-sm-10">
                     <input id="consultant3Selected" [(ngModel)]="consultant3Selected" name="consultant3Selected"
                     (ngModelChange)="getConsultants3(needConsultant3.value, consultants3Found)" [typeahead]="foundConsultants3"
-                    typeaheadOptionField="name" placeholder="Nom du consultant 3" type="text" type="text" class="form-control" #needConsultant3>                </div>    
+                    typeaheadOptionField="name" placeholder="Nom du consultant 3" type="text" type="text" class="form-control" #needConsultant3>
+                </div>    
             </div>
           </div>
     
@@ -120,7 +122,7 @@
                       Description
                   </label>
                   <div class="col-sm-10">
-                    <textarea id="description" placeholder="Expression du besoin" type="text" class="form-control" #needDescription>
+                    <textarea [(ngModel)]="description" name="description" id="description" placeholder="Expression du besoin" type="text" class="form-control">
                     </textarea>
                   </div>      
               </div>
@@ -130,18 +132,16 @@
                         Durée
                     </label>
                     <div class="col-sm-10">
-                    <input id="duree" placeholder="Durée" type="number" class="form-control" #needMonthDuration>
+                    <input [(ngModel)]="duration" name="duration" id="duree" placeholder="Durée" type="number" class="form-control">
                     </div>      
                 </div>
           </div>
           <div class="form-group row" style="text-align: center;">
             <button class="btn btn-primary"
-            (click)="backwardPage1()" style="margin-top: 30px;">Précedent
+            (click)="backwardPage()" style="margin-top: 30px;">Précedent
             </button>
             <button class="btn btn-primary"
-              (click)="submitPage2(templatePage2, needConsultant1.value, needConsultant2.value,
-                                  needConsultant3.value, 
-                                  needDescription.value, needMonthDuration.value)" style="margin-top: 30px; background-color: #FB8234">Valider
+              (click)="submitPage2(templatePage2)" style="margin-top: 30px; background-color: #FB8234">Valider
             </button>
           </div>
         </div>
@@ -152,7 +152,7 @@
                   Prix
               </label>
               <div class="col-sm-10">
-                  <input id="prix" placeholder="Prix HT" type="number" class="form-control" #needPrice>
+                  <input [(ngModel)]="price" name="prix" id="prix" placeholder="Prix HT" type="number" class="form-control">
               </div>      
           </div>
           <div class="form-group row">
@@ -160,15 +160,15 @@
                   Date limite de lancement
               </label>
               <div class="col-sm-10">
-                <input id="start" placeholder="Début au plus tard" type="date" class="form-control" #needStart>
+                <input [(ngModel)]="start" name="start" id="start" placeholder="Début au plus tard" type="date" class="form-control">
               </div>      
           </div>
           <div class="form-group row" style="text-align: center;">
             <button class="btn btn-primary"
-              (click)="backwardPage2()" style="margin-top: 30px">Précedent
+              (click)="backwardPage()" style="margin-top: 30px">Précedent
             </button>
             <button type="submit" name="action" class="btn btn-primary"
-              (click)="submitPage3(needPrice.value, needStart.value)" style="margin-top: 30px; background-color: #FB8234">Valider
+              (click)="submitPage3()" style="margin-top: 30px; background-color: #FB8234">Valider
             </button>
           </div>
         </div>
@@ -176,17 +176,16 @@
         <div *ngIf="page == 4" style="padding: 10px; margin-top: 30px">
           <p style="font-weight: bold; font-size: 18pm">Valider les informations</p>
           <p>Titre : {{title}}</p>
-          <p>Contact : {{contact}}</p>
-          <p>Client : {{customer}}</p>
+          <p>Contact : {{contactSelected}}</p>
+          <p>Client : {{customerSelected}}</p>
           <p *ngFor="let c of consultant">{{ c }}</p>
           <p>Description : {{description}}</p>
           <p>Durée : {{duration}}</p>
-          <p>Titre : {{title}}</p>
           <p>Prix : {{price}}</p>
           <p>Date limite de lancement : {{start}}</p>
           <div class="row" style="margin-top: 25%; text-align: center">
             <button class="btn btn-primary"
-              (click)="backwardPage3()">Précedent
+              (click)="backwardPage()">Précedent
             </button>
             <button class="btn btn-primary"
               (click)="resetFormData()">Réinitialiser
@@ -200,7 +199,6 @@
         
   </div>
 </div>
-
 
 <template #templatePage1>
     <div class="modal-header">

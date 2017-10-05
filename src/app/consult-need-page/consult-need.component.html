@@ -24,7 +24,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let need of mf.data">
+          <tr *ngFor="let need of mf.data" (click)="showSpecificNeed(need.id, templateNeed)">
               <td>{{need.title}}</td>
               <td>{{need.customer_obj.name}}</td>
               <td>{{need.status}}</td>
@@ -47,6 +47,64 @@
     </div>
 </div>
 
+<template #templateNeed>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">
+            {{ chosenNeed.title }}
+        </h4>
+        <button type="button" class="delete-btn btn btn-danger" (click)="tryDeleteNeed(chosenNeed.id, template)">
+            Supprimer
+        </button>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body modal-body-look">
+        <div>
+            <strong>Client :</strong>
+            <span>
+                {{ chosenNeed.customer_obj.name }}
+            </span>
+        </div>
+        <div>
+            <strong>Contact :</strong>
+            <span>
+                {{ chosenNeed.contact_obj.name }}
+            </span>
+        </div>
+        <div> 
+            <strong>Statut :</strong>
+            <span>{{ chosenNeed.status }}</span>
+        </div>
+        <div>
+            <strong>Créé le :</strong>
+            <span>{{ chosenNeed.created_at }}</span>
+        </div>
+        <div>
+            <strong>Durée en mois :</strong>
+            <span>
+                {{ chosenNeed.month_duration }}
+            </span>
+        </div>
+        <div>
+            <strong>Description :</strong>
+            <span>{{ chosenNeed.description }}</span>
+        </div>
+        <div *ngFor="let k of chosenNeed.success_keys; let i = index">
+            <strong>Clef du succès n°{{i+1}} :</strong>
+            <span>
+                {{ k }}
+            </span>
+        </div>
+        <div *ngFor="let c of chosenNeed.consultants_obj; let i = index">
+            <strong>Consultant n°{{i+1}}:</strong>
+            <span>
+                {{ c.name }}
+            </span>
+        </div>
+    </div>
+</template>
+
 
 <template #template>
     <div class="modal-header">
@@ -55,11 +113,13 @@
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <div class="modal-body">
-        Souhaitez-vous supprimer ce besoin ?
-    </div>
-    <div class="btn-group">
-        <button (click)="deleteNeed()">Oui</button>
-        <button (click)="dontDeleteNeed()">Non</button>
+    <div class="modal-body modal-body-delete">
+        <div class="delete-mention">
+            Souhaitez-vous supprimer ce besoin ?
+        </div>
+        <div>
+            <button class="yes-delete-button btn btn-primary" (click)="deleteNeed()">Oui</button>
+            <button class="no-delete-button btn btn-danger" (click)="dontDeleteNeed()">Non</button>
+        </div>
     </div>
 </template>

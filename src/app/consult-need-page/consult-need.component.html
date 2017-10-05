@@ -49,17 +49,17 @@
 
 
 <template #template>
-        <div class="modal-header">
-          <h4 class="modal-title pull-left">Attention</h4>
-          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Souhaitez-vous supprimer ce besoin ?
-        </div>
-        <div class="btn-group">
-            <button (click)="deleteNeed()">Oui</button>
-            <button (click="dontDeleteNeed()">Non</button>
-        </div>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Attention</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        Souhaitez-vous supprimer ce besoin ?
+    </div>
+    <div class="btn-group">
+        <button (click)="deleteNeed()">Oui</button>
+        <button (click)="dontDeleteNeed()">Non</button>
+    </div>
 </template>

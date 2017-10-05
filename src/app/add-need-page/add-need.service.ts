@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions } from '@angular/http'
 
+
 @Injectable()
 export class AddNeedService {
 
@@ -14,20 +15,47 @@ export class AddNeedService {
     let headers = new Headers()
     headers.append('Authorization', "Token " + sessionStorage.getItem('token'))
     headers.append('Content-Type', 'application/json')
-    let param = {"title": title, "contact": contact, "customer": customer, "description": description, "status": "open", "success_keys": keys, "consultants": consultant, "month_duration": duration, "rate": price, "start_at_latest": start}
-
+    let param = {"title": title, "contact": contact, "customer": customer, "description": description, "status": "open" }
+    if (keys != []) {
+      param['success_keys'] = keys
+    }
+    if (consultant != []) {
+      param['consultant'] = consultant
+    }
+    if (duration != '') {
+      param['month_duration'] = duration
+    }
+    if (price != 0) {
+      param['rate'] = price
+    }
+    if (start != '') {
+      param['start_at_latest'] = start
+    }
     console.log(JSON.stringify(param))
     this.http.post(this.url, JSON.stringify(param), new RequestOptions({ headers: headers }))
       .toPromise()
       .then()
   }
 
-  public getConsultants(token) {
+  public getContacts(token) {
     let url = "https://levasseurantoine.ovh/rastarocket/api/contacts/?name=" + token
     let headers = new Headers()
-    let query = new RegExp(token, 'ig');
     headers.append('Authorization', "Token " + sessionStorage.getItem('token'))    
-    this.http.get(url, new RequestOptions({ headers: headers }))
-      .subscribe(data => console.log(data))
+    return this.http.get(url, new RequestOptions({ headers: headers }))
+                    .toPromise() 
+                    .then(data => { 
+                      console.log(data)
+                      return data.json()['contacts'] })
+  }
+
+  public getCustomers(token) {
+    let url = "https://levasseurantoine.ovh/rastarocket/api/customers/?name=" + token
+    let headers = new Headers()
+    headers.append('Authorization', "Token " + sessionStorage.getItem('token'))    
+    return this.http.get(url, new RequestOptions({ headers: headers }))
+                    .toPromise() 
+                    .then(data => { 
+                      console.log(data)
+                      return data.json()['customers'] })
   }
 }

@@ -56,6 +56,7 @@ export class ConsultNeedComponent implements OnInit {
   }
 
   private deleteNeed() {
+<<<<<<< HEAD
     this._consultNeedService.deleteNeed(this.needToDelete);
     this.needToDelete = 0;
     this.needs = [];
@@ -64,6 +65,15 @@ export class ConsultNeedComponent implements OnInit {
               console.log(data);
               this.needs = data;
             });
+=======
+    this._consultNeedService.deleteNeed(this.needToDelete)
+          .then( () => this._consultNeedService.fetchNeedService()
+                              .then(data => this.needs = data ))
+    this.needToDelete = 0
+    this.needs = []
+
+    this.modalRef.hide()        
+>>>>>>> 2608c14ba48e6a9a166933c10049b8735fd6767d
   }
 
   private dontDeleteNeed() {

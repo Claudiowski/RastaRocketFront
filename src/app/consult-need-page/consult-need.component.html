@@ -1,46 +1,52 @@
-<button class="btn btn-primary" (click)="goToForm()">Ajouter un besoin</button>
+<div class="row" style="height: 5%;">
+    <div class="col-md-12 col-xs-12" style="text-align: center; background-color: #FB8234;">
+        <h5 style="color: white">SNAP-AT</h5>
+    </div>
+</div>
+<div class="row" style="height: 50%; max-height: 50%; margin-top: 5%; padding: 10px">
+    <div class="col-md-12 col-xs-12" style="text-align: center;" >
+        <h5 style="font-weight: bold; color:#FB8234;">Mes besoins</h5>
+        <table style="text-align: left; max-height: 50%;" class="table table-striped" [mfData]="needs" #mf="mfDataTable" [mfRowsOnPage]="6">
+          <thead>
+          <tr>
+              <th style="width: 20%">
+                  <mfDefaultSorter by="title">Titre</mfDefaultSorter>
+              </th>
+              <th style="width: 25%">
+                  <mfDefaultSorter by="customer">Client</mfDefaultSorter>
+              </th>
+              <th style="width: 10%">
+                  <mfDefaultSorter by="status">Statut</mfDefaultSorter>
+              </th>
+              <th style="width: 30%">
+                  <mfDefaultSorter by="created_at">Date</mfDefaultSorter>
+              </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let need of mf.data">
+              <td>{{need.title}}</td>
+              <td>{{need.customer_obj.name}}</td>
+              <td>{{need.status}}</td>
+              <td>{{need.created_at}}</td>
+          </tr>
+          </tbody>
+          <tfoot style="text-align: center">
+            <tr >
+                <td colspan="4"> 
+                    <mfBootstrapPaginator></mfBootstrapPaginator>
+                </td>
+            </tr>
+          </tfoot>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12" style="text-align: center">
+            <button class="btn btn-primary" style="background-color: #FB8234" (click)="goToForm()">Ajouter un besoin</button>                    
+    </div>
+</div>
 
-<table class="table table-striped" [mfData]="needs" #mf="mfDataTable" [mfRowsOnPage]="5">
-  <thead>
-  <tr>
-      <th style="width: 20%">
-          <mfDefaultSorter by="title">Titre</mfDefaultSorter>
-      </th>
-      <th style="width: 20%">
-          <mfDefaultSorter by="customer">Client</mfDefaultSorter>
-      </th>
-      <th style="width: 10%">
-          <mfDefaultSorter by="status">Statut</mfDefaultSorter>
-      </th>
-      <th style="width: 20%">
-          <mfDefaultSorter by="created_at">Date</mfDefaultSorter>
-      </th>
-      <th style="width: 10%">
-          <mfDefaultSorter by="delete">Supprimer</mfDefaultSorter>            
-      </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let need of needs">
-      <td>{{need.title}}</td>
-      <td>{{need.customer}}</td>
-      <td>{{need.status}}</td>
-      <td>{{need.created_at}}</td>
-      <td>
-        <button (click)="tryDeleteNeed(need.id, template)" class="btn btn-danger btn-sm">
-            Del
-        </button>
-      </td>
-  </tr>
-  </tbody>
-  <tfoot>
-  <tr>
-    <td colspan="4">
-        <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
-    </td>
-  </tr>
-  </tfoot>
-</table>
 
 <template #template>
         <div class="modal-header">
@@ -56,4 +62,4 @@
             <button (click)="deleteNeed()">Oui</button>
             <button (click="dontDeleteNeed()">Non</button>
         </div>
-    </template>
+</template>

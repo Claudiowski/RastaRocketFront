@@ -1,203 +1,200 @@
-<button class="btn btn-primary" (click)="goToGrid()">Consulter les besoins</button>
-
-<h4>Ajouter un besoin</h4>
-
-<form>
-    <div *ngIf="page == 1">
-
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">            
-        <div class="form-group row">
-            <label for="title" class="col-sm-2 col-form-label">
-                Titre
-            </label>
-            <div class="col-sm-10">
-                <input id="title" placeholder="Titre du besoin" type="text" class="form-control" #needTitle>
-            </div>    
-        </div>
-        <div class="form-group row">
-            <label for="contact" class="col-sm-2 col-form-label">
-              Contact
-            </label>
-            <div class="col-sm-10">
-                <input id="contact" placeholder="Nom du contact" type="text" class="form-control" #needContact>
-            </div>    
-        </div>
-        <div class="form-group row">
-            <label for="customer" class="col-sm-2 col-form-label">
-              Client
-            </label>
-            <div class="col-sm-10">
-                <input id="customer" placeholder="Client" type="text" class="form-control" #needCustomer>
-            </div>    
-        </div>
-      </div>
-
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-          <h4></h4>       
-          <div class="form-group row">
-              <label for="title" class="col-sm-2 col-form-label">
-                  Clef 1
-              </label>
-              <div class="col-sm-10">
-                  <input id="key1" placeholder="Clef 1" type="text" class="form-control" #needKey1>
-              </div>    
-          </div>
-          <div class="form-group row">
-              <label for="contact" class="col-sm-2 col-form-label">
-                Clef 2
-              </label>
-              <div class="col-sm-10">
-                  <input id="contact" placeholder="Clef 2" type="text" class="form-control" #needKey2>
-              </div>    
-          </div>
-          <div class="form-group row">
-              <label for="customer" class="col-sm-2 col-form-label">
-                Clef 3
-              </label>
-              <div class="col-sm-10">
-                  <input id="customer" placeholder="Clef 3" type="text" class="form-control" #needKey3>
-              </div>    
-          </div>
-      </div>
-      
-      <div class="login-button form-group row">
-        <div class="col-sm-10">
-          <button class="btn btn-primary"
-            (click)="submitPage1(templatePage1, needTitle.value, needContact.value, 
-                              needCustomer.value)">Valider
-          </button>
-        </div>
-      </div>
+<div class="row" style="height: 5%; background-color: #FB8234;" >
+  <div class="col-md-2 col-xs-2" style="height: 100%" >
+    <a class="glyphicon glyphicon-chevron-left" (click)="goToGrid()" style="color: white; font-size: 25px; margin-top: 7px; margin-left: 10px; "></a>
+  </div>
+    <div class="col-md-8 col-xs-8" style="text-align: center;">
+        <h5 style="color: white">SNAP-AT</h5>
     </div>
-
-    <div class="row" *ngIf="page == 2">
-      
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-        <div class="form-group row">
-            <label for="consultant1" class="col-sm-2 col-form-label">
-                Consultant 1
-            </label>
-            <div class="col-sm-10">
-                <input id="consultant1" placeholder="Consultant 1 en charge" type="text" class="form-control" #needConsultant1>
-            </div>    
-        </div>
-        <div class="form-group row">
-            <label for="consultant2" class="col-sm-2 col-form-label">
-              Consultant 2
-            </label>
-            <div class="col-sm-10">
-              <input id="consultant2" placeholder="Consultant 2 en charge" type="text" class="form-control" #needConsultant2>
-            </div>    
-        </div>
-        <div class="form-group row">
-            <label for="consultant3" class="col-sm-2 col-form-label">
-              Consultant 3
-            </label>
-            <div class="col-sm-10">
-              <input id="consultant3" placeholder="Consultant 3 en charge" type="text" class="form-control" #needConsultant3>
-            </div>    
-        </div>
-        <div class="form-group row">
-            <label for="consultant4" class="col-sm-2 col-form-label">
-              Consultant 4
-            </label>
-            <div class="col-sm-10">
-              <input id="consultant4" placeholder="Consultant 4 en charge" type="text" class="form-control" #needConsultant4>
-            </div>    
-        </div>
-      </div>
-
-
-      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-
-          <div class="form-group row">
-              <label for="consultant5" class="col-sm-2 col-form-label">
-                Consultant 5
-              </label>
-              <div class="col-sm-10">
-                <input id="consultant5" placeholder="Consultant 5 en charge" type="text" class="form-control" #needConsultant5>
-              </div>    
+</div>
+<div class="row" style="padding: 10px;">
+  <div class="col-md-12 col-xs-12" style="text-align: center">    
+    <h5 style="font-weight: bold; color:#FB8234;">Ajouter un besoin</h5>
+  
+    <form style="text-align: left">
+        <div *ngIf="page == 1">
+          <div class="col-xs-12 col-sm-12">            
+            <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label">
+                    Titre
+                </label>
+                <div class="col-sm-10">
+                    <input id="title" placeholder="Titre du besoin" type="text" class="form-control" #needTitle>
+                </div>    
+            </div>
+            <div class="form-group row">
+                <label for="contact" class="col-sm-2 col-form-label">
+                  Contact
+                </label>
+                <div class="col-sm-10">
+                    <input id="contact" placeholder="Nom du contact" type="text" class="form-control" #needContact>
+                </div>    
+            </div>
+            <div class="form-group row">
+                <label for="customer" class="col-sm-2 col-form-label">
+                  Client
+                </label>
+                <div class="col-sm-10">
+                    <input id="customer" placeholder="Client" type="text" class="form-control" #needCustomer>
+                </div>    
+            </div>
           </div>
-
+    
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <h4></h4>       
+              <div class="form-group row">
+                  <label for="title" class="col-sm-2 col-form-label">
+                      Clef 1
+                  </label>
+                  <div class="col-sm-10">
+                      <input id="key1" placeholder="Clef 1" type="text" class="form-control" #needKey1>
+                  </div>    
+              </div>
+              <div class="form-group row">
+                  <label for="contact" class="col-sm-2 col-form-label">
+                    Clef 2
+                  </label>
+                  <div class="col-sm-10">
+                      <input id="contact" placeholder="Clef 2" type="text" class="form-control" #needKey2>
+                  </div>    
+              </div>
+              <div class="form-group row">
+                  <label for="customer" class="col-sm-2 col-form-label">
+                    Clef 3
+                  </label>
+                  <div class="col-sm-10">
+                      <input id="customer" placeholder="Clef 3" type="text" class="form-control" #needKey3>
+                  </div>    
+              </div>
+          </div>
+          
+          <div class="login-button form-group row">
+            <div class="col-md-12 col-xs-12" style="text-align: center">
+              <button class="btn btn-primary" style="background-color: #FB8234"
+                (click)="submitPage1(templatePage1, needTitle.value, needContact.value, 
+                                  needCustomer.value)">Valider
+              </button>
+            </div>
+          </div>
+        </div>
+    
+        <div class="row" *ngIf="page == 2" style="padding: 10px;">
+          
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="form-group row">
+                <label for="consultant1" class="col-sm-2 col-form-label">
+                    Consultant 1
+                </label>
+                <div class="col-sm-10">
+                    <input id="consultant1" placeholder="Consultant 1 en charge" type="text" class="form-control" #needConsultant1>
+                </div>    
+            </div>
+            <div class="form-group row">
+                <label for="consultant2" class="col-sm-2 col-form-label">
+                  Consultant 2
+                </label>
+                <div class="col-sm-10">
+                  <input id="consultant2" placeholder="Consultant 2 en charge" type="text" class="form-control" #needConsultant2>
+                </div>    
+            </div>
+            <div class="form-group row">
+                <label for="consultant3" class="col-sm-2 col-form-label">
+                  Consultant 3
+                </label>
+                <div class="col-sm-10">
+                  <input id="consultant3" placeholder="Consultant 3 en charge" type="text" class="form-control" #needConsultant3>
+                </div>    
+            </div>
+          </div>
+    
+    
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+    
+              <div class="form-group row">
+                  <label for="description" class="col-sm-2 col-form-label">
+                      Description
+                  </label>
+                  <div class="col-sm-10">
+                    <textarea id="description" placeholder="Expression du besoin" type="text" class="form-control" #needDescription>
+                    </textarea>
+                  </div>      
+              </div>
+    
+            <div class="form-group row">
+                <label for="duree" class="col-sm-2 col-form-label">
+                    Durée
+                </label>
+                <div class="col-sm-10">
+                <input id="duree" placeholder="Durée" type="time" class="form-control" #needMonthDuration>
+                </div>      
+            </div>
+          </div>
+          <div class="form-group row" style="text-align: center;">
+            <button class="btn btn-primary"
+            (click)="backwardPage1()" style="margin-top: 30px;">Précedent
+            </button>
+            <button class="btn btn-primary"
+              (click)="submitPage2(templatePage2, needConsultant1.value, needConsultant2.value,
+                                  needConsultant3.value, 
+                                  needDescription.value, needMonthDuration.value)" style="margin-top: 30px; background-color: #FB8234">Valider
+            </button>
+          </div>
+        </div>
+    
+        <div *ngIf="page == 3" style="padding: 10px; margin-top: 30px">
           <div class="form-group row">
-              <label for="description" class="col-sm-2 col-form-label">
-                  Description
+              <label for="prix" class="col-sm-2 col-form-label">
+                  Prix
               </label>
               <div class="col-sm-10">
-                <textarea id="description" placeholder="Expression du besoin" type="text" class="form-control" #needDescription>
-                </textarea>
+                  <input id="prix" placeholder="Prix HT" type="number" class="form-control" #needPrice>
               </div>      
           </div>
-
-        <div class="form-group row">
-            <label for="duree" class="col-sm-2 col-form-label">
-                Durée
-            </label>
-            <div class="col-sm-10">
-            <input id="duree" placeholder="Durée" type="time" class="form-control" #needMonthDuration>
-            </div>      
+          <div class="form-group row">
+              <label for="start" class="col-sm-2 col-form-label">
+                  Date limite de lancement
+              </label>
+              <div class="col-sm-10">
+                <input id="start" placeholder="Début au plus tard" type="date" class="form-control" #needStart>
+              </div>      
+          </div>
+          <div class="form-group row" style="text-align: center;">
+            <button class="btn btn-primary"
+              (click)="backwardPage2()" style="margin-top: 30px">Précedent
+            </button>
+            <button type="submit" name="action" class="btn btn-primary"
+              (click)="submitPage3(needPrice.value, needStart.value)" style="margin-top: 30px; background-color: #FB8234">Valider
+            </button>
+          </div>
         </div>
-      </div>
-
-      <button class="btn btn-primary"
-      (click)="backwardPage1()">Reculer
-      </button>
-      <button class="btn btn-primary"
-        (click)="submitPage2(templatePage2, needConsultant1.value, needConsultant2.value,
-                            needConsultant3.value, needConsultant4.value,
-                            needConsultant5.value, 
-                            needDescription.value, needMonthDuration.value)">Valider
-      </button>
-    </div>
-
-    <div *ngIf="page == 3">
-      <div class="form-group row">
-          <label for="prix" class="col-sm-2 col-form-label">
-              Prix
-          </label>
-          <div class="col-sm-10">
-              <input id="prix" placeholder="Prix HT" type="number" class="form-control" #needPrice>
-          </div>      
-      </div>
-      <div class="form-group row">
-          <label for="start" class="col-sm-2 col-form-label">
-              Début au plus tard
-          </label>
-          <div class="col-sm-10">
-            <input id="start" placeholder="Début au plus tard" type="date" class="form-control" #needStart>
-          </div>      
-      </div>
-      <button class="btn btn-primary"
-        (click)="backwardPage2()">Reculer
-      </button>
-      <button type="submit" name="action" class="btn btn-primary"
-        (click)="submitPage3(needPrice.value, needStart.value)">Valider
-      </button>
-    </div>
-
-    <div *ngIf="page == 4">
-      <p>Valider le formulaire ?</p>
-      <p>Titre : {{title}}</p>
-      <p>Contact : {{contact}}</p>
-      <p>Client : {{customer}}</p>
-      <p *ngFor="let c of consultant">{{ c }}</p>
-      <p>Description : {{description}}</p>
-      <p>Durée : {{duration}}</p>
-      <p>Titre : {{title}}</p>
-      <p>Prix : {{price}}</p>
-      <p>Date limite de lancement : {{start}}</p>
-      <button class="btn btn-primary"
-        (click)="backwardPage3()">Reculer
-      </button>
-      <button class="btn btn-primary"
-        (click)="resetFormData()">Réinitialiser
-      </button>
-      <button class="btn btn-primary"
-        (click)="sendNeed()">Valider
-      </button>
-    </div>
     
-</form>
+        <div *ngIf="page == 4" style="padding: 10px; margin-top: 30px">
+          <p style="font-weight: bold; font-size: 18pm">Valider les informations</p>
+          <p>Titre : {{title}}</p>
+          <p>Contact : {{contact}}</p>
+          <p>Client : {{customer}}</p>
+          <p *ngFor="let c of consultant">{{ c }}</p>
+          <p>Description : {{description}}</p>
+          <p>Durée : {{duration}}</p>
+          <p>Titre : {{title}}</p>
+          <p>Prix : {{price}}</p>
+          <p>Date limite de lancement : {{start}}</p>
+          <div class="row" style="margin-top: 25%; text-align: center">
+            <button class="btn btn-primary"
+              (click)="backwardPage3()">Précedent
+            </button>
+            <button class="btn btn-primary"
+              (click)="resetFormData()">Réinitialiser
+            </button>
+            <button style="background-color: #FB8234" class="btn btn-primary"
+              (click)="sendNeed()">Valider
+            </button>
+          </div>
+        </div>
+        
+    </form>
+  </div>
+</div>
+
 
 <template #templatePage1>
     <div class="modal-header">

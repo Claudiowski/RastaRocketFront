@@ -11,7 +11,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { AppService } from './app.service'
+import { AppService } from './app.service';
 
 import { AddNeedComponent } from './add-need-page/add-need.component'
 import { AddNeedService } from './add-need-page/add-need.service'

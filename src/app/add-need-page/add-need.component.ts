@@ -65,20 +65,38 @@ export class AddNeedComponent implements OnInit {
   }
 
   private submitPage1(template, title, contact, customer, key1, key2, key3) {
-    console.log(this.foundCustomers)
     if (title == '' || contact == '' || customer == '') {
       this.openModal(template)
     } else {
       this.title = title
-      this.contact = this.contactSelected['id']
-      this.customer = this.customerSelected['id']
+      this.contact = this.findContactId()
+      this.customer = this.findCustomerId()
       if (key1 != '') this.keys.push(key1)
       if (key2 != '') this.keys.push(key2)
       if (key3 != '') this.keys.push(key3)
       console.log(this.keys)
       this.page ++
     }
+    console.log(this.contact)
   }
+
+  private findContactId() {
+    for (let i = 0; i < this.foundContacts.length; i++) {
+      if (this.foundContacts[i].name == this.contactSelected) {
+        return this.foundContacts[i].id
+      }
+    }
+    return ''
+  }
+
+  private findCustomerId() {
+    for (let i = 0; i < this.foundCustomers.length; i++) {
+      if (this.foundCustomers[i].name == this.contactSelected) {
+        return this.foundCustomers[i].id
+      }
+    }
+    return ''
+  }  
 
   private submitPage2(template, cons1, cons2, cons3, cons4, cons5, description, duration) {
     console.log(description)

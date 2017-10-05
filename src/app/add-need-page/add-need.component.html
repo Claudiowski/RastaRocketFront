@@ -89,27 +89,29 @@
                     Consultant 1
                 </label>
                 <div class="col-sm-10">
-                    <input id="consultant1" placeholder="Consultant 1 en charge" type="text" class="form-control" #needConsultant1>
-                </div>    
+                    <input id="consultant1Selected" [(ngModel)]="consultant1Selected" name="consultant1Selected"
+                    (ngModelChange)="getConsultants1(needConsultant1.value, consultants1Found)" [typeahead]="foundConsultants1"
+                    typeaheadOptionField="name" placeholder="Nom du consultant 1" type="text" type="text" class="form-control" #needConsultant1>                </div>    
             </div>
             <div class="form-group row">
                 <label for="consultant2" class="col-sm-2 col-form-label">
                   Consultant 2
                 </label>
                 <div class="col-sm-10">
-                  <input id="consultant2" placeholder="Consultant 2 en charge" type="text" class="form-control" #needConsultant2>
-                </div>    
+                    <input id="consultant2Selected" [(ngModel)]="consultant2Selected" name="consultant2Selected"
+                    (ngModelChange)="getConsultants2(needConsultant2.value, consultants2Found)" [typeahead]="foundConsultants2"
+                    typeaheadOptionField="name" placeholder="Nom du consultant 2" type="text" type="text" class="form-control" #needConsultant2>                </div>    
             </div>
             <div class="form-group row">
                 <label for="consultant3" class="col-sm-2 col-form-label">
                   Consultant 3
                 </label>
                 <div class="col-sm-10">
-                  <input id="consultant3" placeholder="Consultant 3 en charge" type="text" class="form-control" #needConsultant3>
-                </div>    
+                    <input id="consultant3Selected" [(ngModel)]="consultant3Selected" name="consultant3Selected"
+                    (ngModelChange)="getConsultants3(needConsultant3.value, consultants3Found)" [typeahead]="foundConsultants3"
+                    typeaheadOptionField="name" placeholder="Nom du consultant 3" type="text" type="text" class="form-control" #needConsultant3>                </div>    
             </div>
           </div>
-    
     
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     

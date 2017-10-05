@@ -33,7 +33,6 @@ export class ConsultNeedComponent implements OnInit {
   private fetchNeeds() {
     this._consultNeedService.fetchNeedService()
             .then(data => {
-              console.log(data);
               this.needs = this.parsingDate(data);
             });
   }

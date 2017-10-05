@@ -16,8 +16,16 @@ export class AddNeedComponent implements OnInit {
   private contactSelected
   private customerSelected
 
+  private consultant1Selected
+  private consultant2Selected
+  private consultant3Selected
+
   private foundContacts : any[]
   private foundCustomers : any[]
+
+  private foundConsultants1 : any[]
+  private foundConsultants2 : any[]
+  private foundConsultants3 : any[]
 
   public modalRef: BsModalRef;
 
@@ -47,6 +55,9 @@ export class AddNeedComponent implements OnInit {
     this.keys = []
     this.foundContacts = []
     this.foundCustomers = []
+    this.foundConsultants1 = []
+    this.foundConsultants2 = []
+    this.foundConsultants3 = []
    }
 
    private goToGrid() {
@@ -65,53 +76,78 @@ export class AddNeedComponent implements OnInit {
   }
 
   private submitPage1(template, title, contact, customer, key1, key2, key3) {
+    console.log(key1)
+    console.log(key2)
+    console.log(key3)
     if (title == '' || contact == '' || customer == '') {
       this.openModal(template)
     } else {
       this.title = title
       this.contact = this.findContactId()
       this.customer = this.findCustomerId()
-      if (key1 != '') this.keys.push(key1)
-      if (key2 != '') this.keys.push(key2)
-      if (key3 != '') this.keys.push(key3)
-      console.log(this.keys)
+      if (key1 != undefined) this.keys.push(key1)
+      if (key2 != undefined) this.keys.push(key2)
+      if (key3 != undefined) this.keys.push(key3)
       this.page ++
     }
-    console.log(this.contact)
   }
 
   private findContactId() {
-    for (let i = 0; i < this.foundContacts.length; i++) {
-      if (this.foundContacts[i].name == this.contactSelected) {
-        return this.foundContacts[i].id
+    for (let i = 0; i <= this.foundContacts.length; i++) {
+      if (this.foundContacts[i]['name'] == this.contactSelected) {
+        return this.foundContacts[i]['id']
       }
     }
     return ''
   }
 
   private findCustomerId() {
-    for (let i = 0; i < this.foundCustomers.length; i++) {
-      if (this.foundCustomers[i].name == this.contactSelected) {
+    for (let i = 0; i <= this.foundCustomers.length; i++) {
+      if (this.foundCustomers[i].name == this.customerSelected) {
         return this.foundCustomers[i].id
       }
     }
     return ''
   }  
 
-  private submitPage2(template, cons1, cons2, cons3, cons4, cons5, description, duration) {
-    console.log(description)
+  private submitPage2(template, cons1, cons2, cons3, description, duration) {
     if (description == '') {
       this.openModal(template)
     } else {
-      if (cons1 != '') this.consultant.push(cons1)
-      if (cons2 != '') this.consultant.push(cons2)
-      if (cons3 != '') this.consultant.push(cons3)
-      if (cons4 != '') this.consultant.push(cons4)
-      if (cons5 != '') this.consultant.push(cons5)
+      if (cons1 != '') this.consultant.push(this.findConsultant1Id())
+      if (cons2 != '') this.consultant.push(this.findConsultant2Id())
+      if (cons3 != '') this.consultant.push(this.findConsultant3Id())
       this.description = description.trim()
       if (duration != '') this.duration = +duration
       this.page ++
     }
+  }
+
+  private findConsultant1Id() {
+    for (let i = 0; i <= this.foundConsultants1.length; i++) {
+      if (this.foundConsultants1[i]['name'] == this.consultant1Selected) {
+        return this.foundConsultants1[i]['id']
+      }
+    }
+    return ''
+  }
+
+  private findConsultant2Id() {
+    for (let i = 0; i <= this.foundConsultants2.length; i++) {
+      if (this.foundConsultants2[i]['name'] == this.consultant2Selected) {
+        return this.foundConsultants2[i]['id']
+      }
+    }
+    return ''
+  }
+
+  private findConsultant3Id() {
+    for (let i = 0; i <= this.foundConsultants3.length; i++) {
+      if (this.foundConsultants3[i]['name'] == this.consultant3Selected) {
+        return this.foundConsultants3[i]['id']
+      }
+    }
+    return ''
   }
 
   private submitPage3(price, start) {
@@ -155,7 +191,6 @@ export class AddNeedComponent implements OnInit {
     if (token != ''){
     this._addNeedService.getContacts(token)
         .then(data => {
-          console.log(data)
           this.foundContacts = data
         })
       }
@@ -165,10 +200,35 @@ export class AddNeedComponent implements OnInit {
     if (token != ''){
     this._addNeedService.getCustomers(token)
         .then(data => {
-          console.log(data)
           this.foundCustomers = data
         })
       }
   }
-  
+
+  private getConsultants1(token){
+    if (token != ''){
+      this._addNeedService.getConsultants(token)
+          .then(data => {
+            this.foundConsultants1 = data
+          })
+        }
+  }
+
+  private getConsultants2(token){
+    if (token != ''){
+      this._addNeedService.getConsultants(token)
+          .then(data => {
+            this.foundConsultants2 = data
+          })
+        }
+  }
+
+  private getConsultants3(token){
+    if (token != ''){
+      this._addNeedService.getConsultants(token)
+          .then(data => {
+            this.foundConsultants3 = data
+          })
+        }
+  }
 }

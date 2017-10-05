@@ -7,9 +7,7 @@ export class AddNeedService {
 
   url = "https://levasseurantoine.ovh/rastarocket/api/needs/"
 
-  constructor(private http : Http) { 
-
-  }
+  constructor(private http : Http) { }
 
   public addNeed(title, contact, customer, keys, consultant, description, duration, price, start) {
     let headers = new Headers()
@@ -31,7 +29,6 @@ export class AddNeedService {
     if (start != '') {
       param['start_at_latest'] = start
     }
-    console.log(JSON.stringify(param))
     this.http.post(this.url, JSON.stringify(param), new RequestOptions({ headers: headers }))
       .toPromise()
       .then()
@@ -44,7 +41,6 @@ export class AddNeedService {
     return this.http.get(url, new RequestOptions({ headers: headers }))
                     .toPromise() 
                     .then(data => { 
-                      console.log(data)
                       return data.json()['contacts'] })
   }
 
@@ -55,7 +51,16 @@ export class AddNeedService {
     return this.http.get(url, new RequestOptions({ headers: headers }))
                     .toPromise() 
                     .then(data => { 
-                      console.log(data)
                       return data.json()['customers'] })
+  }
+
+  public getConsultants(token) {
+    let url = "https://levasseurantoine.ovh/rastarocket/api/consultants/?name=" + token
+    let headers = new Headers()
+    headers.append('Authorization', "Token " + sessionStorage.getItem('token'))    
+    return this.http.get(url, new RequestOptions({ headers: headers }))
+                    .toPromise() 
+                    .then(data => { 
+                      return data.json()['consultants'] })
   }
 }
